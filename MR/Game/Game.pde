@@ -5,11 +5,18 @@
   Course Name: DMA60 Creative Coding
   Prof. George McKinney
   Project Description: This program is an edited version of the example given in Canvas.
-  Last Modified: November 6, 2024
+  Last Modified: November 19, 2024
   */
 
 
-class Character {
+//This pde file is setting up the boolean states, playable character, and obstacles (fruits).
+
+boolean notEaten1 = false;
+boolean notEaten2 = false;
+//Two states for the fruits when they are eaten seperately.
+
+
+class Character { //The playable Pac-Man character.
   float x, y;
   float size;
   
@@ -30,13 +37,13 @@ class Character {
   }
   
   void display() {
-    fill(255, 0, 0);
-    ellipse(x, y, size, size);
+    fill(255, 255, 0);
+    arc(x, y, 80, 80, .6, TWO_PI-.6);
   }
 }
 
 
-class Obstacle {
+class Obstacle { //The class for the 2 fruits which have their own pde file.
   float x, y;
   float size;
   
@@ -45,49 +52,9 @@ class Obstacle {
     this.y = y;
     this.size = size;
   }
-  
-  void display() {
-    fill(0, 0, 255);
-    rect(x, y, size, size);
+
+  void display(){
+
   }
 }
 
-Character player;
-Obstacle obstacle;
-
-void setup() {
-  size(400, 400);
-  player = new Character(50, height / 2, 30);
-  obstacle = new Obstacle(width - 50, height / 2, 40);
-}
-
-void draw() {
-  background(255);
-
-  if (keyPressed) {
-    if (key == 'a') {
-      player.move(-2, 0);
-    } else if (key == 'd') {
-      player.move(2, 0);
-    } else if (key == 'w') {
-      player.move(0, -2);
-    } else if (key == 's') {
-      player.move(0, 2);
-    }
-  }
-
-  player.display();
-  obstacle.display();
-
-  if (player.collidesWith(obstacle)) {
-    textSize(32);
-    fill(0);
-    text("Game Over!", width / 2 - 100, height / 2);
-  }
-}
-
-    
-
-void mousePressed(){
-    println(mouseX,mouseY);
-}
