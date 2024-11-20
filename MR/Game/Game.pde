@@ -43,7 +43,7 @@ class Character { //The playable Pac-Man character.
 }
 
 
-class Obstacle { //The class for the 2 fruits which have their own pde file.
+abstract class Obstacle { //The class for the 2 fruits which have their own pde file.
   float x, y;
   float size;
   
@@ -53,8 +53,6 @@ class Obstacle { //The class for the 2 fruits which have their own pde file.
     this.size = size;
   }
 
-  void display(){
-
-  }
+  abstract void display();
 }
 
